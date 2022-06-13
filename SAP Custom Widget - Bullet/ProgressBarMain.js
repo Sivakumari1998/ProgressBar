@@ -127,5 +127,5 @@
 		}
 	}
 	
-	customElements.define("com-demo-progressbar", Box);
+	customElements.define("com-demo-bullet", Box);
 })();
