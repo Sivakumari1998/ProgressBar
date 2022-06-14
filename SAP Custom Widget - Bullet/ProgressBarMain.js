@@ -103,7 +103,7 @@
 		target(x,ll,ul){
 			var end_x;
 			end_x=(900*(x/(ul-ll)))+50;
-			return "M "+ end_x+ "450 L"+ end_x+" 550";
+			return "M "+ end_x+ " 450 L"+ end_x+" 550";
 		};
 			
 
