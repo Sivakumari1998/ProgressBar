@@ -82,13 +82,14 @@
 			var valul1 = valul;
 			var x = this.progress(val1,valll1,valul1);
 			var y = "M 750 450 L 750 550";
+			var z = this.target(val1,valll1,valul1);
 			var rounded = Math.round( val * 10 ) / 10;
 			var percentage = (val1/(valul1-valll1))*100;
 
 			
 			if(rounded >=0 && rounded <=100) {
 				this.$style.innerHTML = ':host {border-radius: 10px;border-width: 2px;border-color: white;border-style: solid;display: block;}.body {background: #fff;}.metric {padding: 10%;}.metric svg {max-width: 100%;}.metric path {stroke-width: 75;stroke: #ecf0f1;fill: none;}.metric text {font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;}.metric.participation path.data-progress {stroke: blue,stroke-width: 3,fill: none;}.metric.participation text {fill: ' + color + ';}';
-				this.$svg.innerHTML = '<path d="M 50 500 L950 500"></path><text class="percentage" text-anchor="middle" alignment-baseline="middle" x="500" y="200" font-size="140" font-weight="bold">' + rounded +'( '+percentage + '% )</text><text class="title" text-anchor="middle" alignment-baseline="middle" x="500" y="350" font-size="90" font-weight="normal">' + info + '</text><path d="' + y + '" class="data-progress"></path><text class="title" text-anchor="middle" alignment-baseline="middle" x="25" y="485" font-size="20" font-weight="normal">' + valll1 + '</text><text class="title" text-anchor="middle" alignment-baseline="middle" x="975" y="485" font-size="20" font-weight="normal">' + valul1 + '</text>"';
+				this.$svg.innerHTML = '<path d="M 50 500 L950 500"></path><text class="percentage" text-anchor="middle" alignment-baseline="middle" x="500" y="200" font-size="140" font-weight="bold">' + rounded +'( '+percentage + '% )</text><text class="title" text-anchor="middle" alignment-baseline="middle" x="500" y="350" font-size="90" font-weight="normal">' + info + '</text><path d="' + z + '" class="data-progress"></path><text class="title" text-anchor="middle" alignment-baseline="middle" x="25" y="485" font-size="20" font-weight="normal">' + valll1 + '</text><text class="title" text-anchor="middle" alignment-baseline="middle" x="975" y="485" font-size="20" font-weight="normal">' + valul1 + '</text>"';
 			}
 		}
 
@@ -98,6 +99,13 @@
 			end_x=(900*(x/(ul-ll)))+50;
 			return "M 50 500 L"+ end_x+" 500";
 		};
+		
+		target(x,ll,ul){
+			var end_x;
+			end_x=(900*(x/(ul-ll)))+50;
+			return "M "+ end_x+ "450 L"+ end_x+" 550";
+		};
+			
 
 		onCustomWidgetBeforeUpdate(changedProperties) {
 			this._props = { ...this._props, ...changedProperties };
